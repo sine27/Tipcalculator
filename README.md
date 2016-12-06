@@ -10,12 +10,19 @@
 - enabled reset the view by changing percentage to default, and setting divider starting with 1
 - enabled UserDefault to store user data
 
+### Test cases concern:
+- Setting: any input > 100 || < 0 will remain original value without notification
+- Setting: "Back" button should and will lead to no change
+- Setting: empty text field will automatically set to 0
+
 ## Todo:
 - currency problem: change language setting will lead to a strange result value with unexpected unit (localeCurrency)
 - change outlook by enable user setting (Setting controller is a table view, add cell to enable more)
 
 ## Notes:
 - Update in unwindToList
+- This app could be used as a tax calculator
+- This app could be used as a simple divider with 0% of tip rate
 
 ### The demo video is posted on youtube:
 
