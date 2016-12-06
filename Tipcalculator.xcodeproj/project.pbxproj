@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2511D1CF1DF640D000A320DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511D1CE1DF640D000A320DC /* AppDelegate.swift */; };
-		2511D1D11DF640D000A320DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511D1D01DF640D000A320DC /* ViewController.swift */; };
 		2511D1D41DF640D000A320DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2511D1D21DF640D000A320DC /* Main.storyboard */; };
 		2511D1D61DF640D000A320DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2511D1D51DF640D000A320DC /* Assets.xcassets */; };
 		2511D1D91DF640D000A320DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2511D1D71DF640D000A320DC /* LaunchScreen.storyboard */; };
@@ -38,7 +37,6 @@
 /* Begin PBXFileReference section */
 		2511D1CB1DF640D000A320DC /* Tipcalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipcalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2511D1CE1DF640D000A320DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2511D1D01DF640D000A320DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2511D1D31DF640D000A320DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2511D1D51DF640D000A320DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2511D1D81DF640D000A320DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				2511D1CE1DF640D000A320DC /* AppDelegate.swift */,
-				2511D1D01DF640D000A320DC /* ViewController.swift */,
 				2511D1D21DF640D000A320DC /* Main.storyboard */,
 				2511D1D51DF640D000A320DC /* Assets.xcassets */,
 				2511D1D71DF640D000A320DC /* LaunchScreen.storyboard */,
@@ -269,7 +266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				252A3EC21DF67FC300A0D7F3 /* SettingTableViewController.swift in Sources */,
-				2511D1D11DF640D000A320DC /* ViewController.swift in Sources */,
 				2511D1FD1DF641BE00A320DC /* CalcViewController.swift in Sources */,
 				2511D1CF1DF640D000A320DC /* AppDelegate.swift in Sources */,
 			);
