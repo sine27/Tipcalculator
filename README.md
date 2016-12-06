@@ -4,4 +4,9 @@
 
 (https://youtu.be/FLIyyrXYrIo)
 
-[img]http://i.imgur.com/8JsJInq.gif[/img]
+![alt tag](http://i.imgur.com/8JsJInq.gif)
+
+![alt tag](http://i.imgur.com/diFc4kq.gif)
+
+![alt tag](http://i.imgur.com/vDNSKHP.gif)
+
