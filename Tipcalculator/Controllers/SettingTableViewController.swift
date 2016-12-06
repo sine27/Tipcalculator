@@ -67,12 +67,14 @@ class SettingTableViewController: UITableViewController {
         percentageBar.setTitle("\(p3)%", forSegmentAt: 2)
     }
     
-    
-    @IBAction func defaultIndexTapped(_ sender: Any) {
-        defaultTipIndex = percentageBar.selectedSegmentIndex
+    @IBAction func saveButtonTapped(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(defaultTipIndex, forKey: "default_tipPercentage_Index")
         defaults.synchronize()
         currentPercentIndex = defaultTipIndex
+    }
+    
+    @IBAction func defaultIndexTapped(_ sender: Any) {
+        defaultTipIndex = percentageBar.selectedSegmentIndex
     }
 }

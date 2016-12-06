@@ -452,6 +452,7 @@
                     <navigationItem key="navigationItem" title="Setting" id="VF7-gb-oBb">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="rhN-aU-0z5">
                             <connections>
+                                <action selector="saveButtonTapped:" destination="PqR-1O-vmv" id="ocx-d2-JjK"/>
                                 <segue destination="ibU-cU-dph" kind="unwind" identifier="doneSetting" unwindAction="unwindToList:" id="rXr-24-EUr"/>
                             </connections>
                         </barButtonItem>
@@ -473,7 +474,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hZC-wL-rWd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lo8-Yc-Q3F">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lo8-Yc-Q3F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -157,7 +157,6 @@ class CalcViewController: UIViewController {
             divider3.text = "\(dividers[2])"
             divider4.text = "\(dividers[3])"
             
-            currentPercentIndex = defaults.integer(forKey: "default_tipPercentage_Index")
             changeResult(segControllerIndex: currentPercentIndex)
         }
     }
@@ -196,16 +195,18 @@ class CalcViewController: UIViewController {
         resultLabel1.text = (amountAfterTip/Double(dividers[1])).asLocaleCurrency
         resultLabel2.text = (amountAfterTip/Double(dividers[2])).asLocaleCurrency
         resultLabel3.text = (amountAfterTip/Double(dividers[3])).asLocaleCurrency
-        
-        
     }
 
     @IBAction func resetValue(_ sender: Any) {
+        inputTextField.text = ""
         dividers = [1, 2, 3, 4]
         divider1.text = "\(dividers[0])"
         divider2.text = "\(dividers[1])"
         divider3.text = "\(dividers[2])"
         divider4.text = "\(dividers[3])"
+        
+        currentPercentIndex = defaults.integer(forKey: "default_tipPercentage_Index")
+        percentSegmentController.selectedSegmentIndex = currentPercentIndex
         changeResult(segControllerIndex: currentPercentIndex)
     }
     
@@ -248,7 +249,6 @@ class CalcViewController: UIViewController {
                 percentSegmentController.setTitle("\(percentageArrayToDisplay[1])%", forSegmentAt: 1)
                 percentSegmentController.setTitle("\(percentageArrayToDisplay[2])%", forSegmentAt: 2)
                 
-                print(percentageArrayToDisplay[0])
                 changeResult(segControllerIndex: newpercentage!)
                 
             }
