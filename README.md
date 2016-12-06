@@ -10,7 +10,7 @@
 - enabled reset the view by changing percentage to default, and setting divider starting with 1
 - enabled UserDefault to store user data
 
-## Needs:
+## Todo:
 - currency problem: change language setting will lead to a strange result value with unexpected unit (localeCurrency)
 - change outlook by enable user setting (Setting controller is a table view, add cell to enable more)
 
@@ -19,7 +19,9 @@
 
 ### The demo video is posted on youtube:
 
-<video src="https://youtu.be/7rqaIN4-Wzw" width="320" height="200" controls preload></video>
+[![Alt text](https://i.ytimg.com/vi/7rqaIN4-Wzw/hqdefault.jpg)](https://www.youtube.com/embed/7rqaIN4-Wzw)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7rqaIN4-Wzw" frameborder="0" allowfullscreen></iframe>
 
 ### tip calculation
 
