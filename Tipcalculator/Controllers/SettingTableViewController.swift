@@ -68,10 +68,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        defaults.set(defaultTipIndex, forKey: "default_tipPercentage_Index")
-        defaults.synchronize()
-        currentPercentIndex = defaultTipIndex
+        
     }
     
     @IBAction func defaultIndexTapped(_ sender: Any) {

@@ -219,6 +219,13 @@ class CalcViewController: UIViewController {
             if (newpercentage == nil) {
                 changeResult(segControllerIndex: currentPercentIndex)
             } else {
+                
+                let defaults = UserDefaults.standard
+                defaults.set(newpercentage, forKey: "default_tipPercentage_Index")
+                defaults.synchronize()
+                print(defaults.integer(forKey: "default_tipPercentage_Index"))
+                currentPercentIndex = newpercentage!
+                
                 percentSegmentController.selectedSegmentIndex = settingController.percentageBar.selectedSegmentIndex
                 
                 if (settingController.p1 > 100 || settingController.p1 < 0) {
@@ -238,7 +245,6 @@ class CalcViewController: UIViewController {
                 }
                 
                 // update user default
-                let defaults = UserDefaults.standard
                 defaults.setValue(percentageArrayToDisplay[0], forKey: userPercentage.p1)
                 defaults.setValue(percentageArrayToDisplay[1], forKey: userPercentage.p2)
                 defaults.setValue(percentageArrayToDisplay[2], forKey: userPercentage.p3)
