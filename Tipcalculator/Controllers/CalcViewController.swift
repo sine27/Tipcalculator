@@ -26,6 +26,7 @@ struct userPercentage {
     static let p1 = "first_percentage_displayed"
     static let p2 = "second_percentage_displayed"
     static let p3 = "third_percentage_displayed"
+    static let pdi = "default_tipPercentage_Index"
 }
 
 class CalcViewController: UIViewController {
@@ -93,10 +94,10 @@ class CalcViewController: UIViewController {
         percentSegmentController.setTitle("\(percentageArrayToDisplay[1])%", forSegmentAt: 1)
         percentSegmentController.setTitle("\(percentageArrayToDisplay[2])%", forSegmentAt: 2)
         
-        if (defaults.object(forKey: "default_tipPercentage_Index") != nil) {
-            currentPercentIndex = defaults.integer(forKey: "default_tipPercentage_Index")
+        if (defaults.object(forKey: userPercentage.pdi) != nil) {
+            currentPercentIndex = defaults.integer(forKey: userPercentage.pdi)
         } else {
-            defaults.set(0, forKey: "default_tipPercentage_Index")
+            defaults.set(0, forKey: userPercentage.pdi)
         }
         percentSegmentController.selectedSegmentIndex = currentPercentIndex
     }
@@ -221,9 +222,9 @@ class CalcViewController: UIViewController {
             } else {
                 
                 let defaults = UserDefaults.standard
-                defaults.set(newpercentage, forKey: "default_tipPercentage_Index")
+                defaults.set(newpercentage, forKey: userPercentage.pdi)
                 defaults.synchronize()
-                print(defaults.integer(forKey: "default_tipPercentage_Index"))
+
                 currentPercentIndex = newpercentage!
                 
                 percentSegmentController.selectedSegmentIndex = settingController.percentageBar.selectedSegmentIndex

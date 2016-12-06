@@ -31,7 +31,7 @@ class SettingTableViewController: UITableViewController {
         percentageBar.setTitle("\(percentageArrayToDisplay[2])%", forSegmentAt: 2)
         
         let defaults = UserDefaults.standard
-        percentageBar.selectedSegmentIndex = defaults.integer(forKey: "default_tipPercentage_Index")
+        percentageBar.selectedSegmentIndex = defaults.integer(forKey: userPercentage.pdi)
         defaultTipIndex = percentageBar.selectedSegmentIndex
     }
     
