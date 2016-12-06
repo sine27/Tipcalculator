@@ -2,4 +2,4 @@
 
 ### The demo video is posted on youtube:
 
-[Named Link](https://youtu.be/FLIyyrXYrIo)
+(https://youtu.be/FLIyyrXYrIo)
