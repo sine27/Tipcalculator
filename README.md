@@ -19,7 +19,7 @@
 
 ### The demo video is posted on youtube:
 
-[![IMAGE ALT TEXT HERE](https://youtu.be/7rqaIN4-Wzw)](https://youtu.be/7rqaIN4-Wzw)
+<video src="https://youtu.be/7rqaIN4-Wzw" width="320" height="200" controls preload></video>
 
 ### tip calculation
 
