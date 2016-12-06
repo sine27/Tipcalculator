@@ -10,12 +10,8 @@ import UIKit
 
 let screenHeight: CGFloat = UIScreen.main.bounds.height
 let screenWidth: CGFloat = UIScreen.main.bounds.width
-var percentagesPrint = [18, 20, 22]
-var dividers = [1, 2, 3, 4]
-var percent1 = Double(percentagesPrint[0]) / 100
-var percent2 = Double(percentagesPrint[1]) / 100
-var percent3 = Double(percentagesPrint[2]) / 100
-var defaultPercentIndex : Int = 0
+var currentPercentIndex : Int = 0
+var percentageArrayToDisplay : [Int] = [1, 2, 3]
 
 extension Double {
     var asLocaleCurrency: String {
@@ -24,6 +20,12 @@ extension Double {
         formatter.locale = Locale.current
         return formatter.string(from :NSNumber(value: self))!
     }
+}
+
+struct userPercentage {
+    static let p1 = "first_percentage_displayed"
+    static let p2 = "second_percentage_displayed"
+    static let p3 = "third_percentage_displayed"
 }
 
 class CalcViewController: UIViewController {
@@ -46,8 +48,12 @@ class CalcViewController: UIViewController {
     @IBOutlet weak var divider4: UILabel!
     @IBOutlet weak var inputToTop: NSLayoutConstraint!
     
+    var dividers = [1, 2, 3, 4]
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         resultView.alpha = 0
         resultView.isHidden = true
         percentSegmentController.alpha = 0
@@ -68,11 +74,34 @@ class CalcViewController: UIViewController {
         divider3.text = "3"
         divider4.text = "4"
         
-        percentSegmentController.setTitle("\(percentagesPrint[0])%", forSegmentAt: 0)
-        percentSegmentController.setTitle("\(percentagesPrint[1])%", forSegmentAt: 1)
-        percentSegmentController.setTitle("\(percentagesPrint[2])%", forSegmentAt: 2)
+        
+        // check and get userDefault value for pertage array
+        
+        if (defaults.object(forKey: userPercentage.p1) == nil) {
+            percentageArrayToDisplay = [18, 20, 22]
+            defaults.setValue(18, forKey: userPercentage.p1)
+            defaults.setValue(20, forKey: userPercentage.p2)
+            defaults.setValue(22, forKey: userPercentage.p3)
+            defaults.synchronize()
+        } else {
+            percentageArrayToDisplay[0] = defaults.integer(forKey: userPercentage.p1)
+            percentageArrayToDisplay[1] = defaults.integer(forKey: userPercentage.p2)
+            percentageArrayToDisplay[2] = defaults.integer(forKey: userPercentage.p3)
+        }
+        
+        percentSegmentController.setTitle("\(percentageArrayToDisplay[0])%", forSegmentAt: 0)
+        percentSegmentController.setTitle("\(percentageArrayToDisplay[1])%", forSegmentAt: 1)
+        percentSegmentController.setTitle("\(percentageArrayToDisplay[2])%", forSegmentAt: 2)
+        
+        if (defaults.object(forKey: "default_tipPercentage_Index") != nil) {
+            currentPercentIndex = defaults.integer(forKey: "default_tipPercentage_Index")
+        } else {
+            defaults.set(0, forKey: "default_tipPercentage_Index")
+        }
+        percentSegmentController.selectedSegmentIndex = currentPercentIndex
     }
     
+    // hide keyboard
     @IBAction func onTap(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -83,19 +112,21 @@ class CalcViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // whenever input textfield or segmentController tapped, change the value
     @IBAction func onChange(_ sender: Any) {
         
-        defaultPercentIndex = percentSegmentController.selectedSegmentIndex
+        currentPercentIndex = percentSegmentController.selectedSegmentIndex
         
-        changeResult(percentIndex : defaultPercentIndex)
+        changeResult(segControllerIndex : currentPercentIndex)
         
+        // animation
         if inputTextField.text != "" {
             
             self.inputToTop.constant = 0
             self.resultView.isHidden = false
             self.percentSegmentController.isHidden = false
             
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { () -> Void in
+            UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseIn, animations: { () -> Void in
                 self.view.layoutIfNeeded()
                 self.resultView.alpha = 1
                 self.percentSegmentController.alpha = 1
@@ -103,7 +134,7 @@ class CalcViewController: UIViewController {
             
         } else {
             self.inputToTop.constant = 80
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: { () -> Void in
+            UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseIn, animations: { () -> Void in
                 self.resultView.alpha = 0
                 self.percentSegmentController.alpha = 0
                 self.view.layoutIfNeeded()
@@ -111,7 +142,6 @@ class CalcViewController: UIViewController {
                 self.resultView.isHidden = true
                 self.percentSegmentController.isHidden = true
             })
-            
         }
     }
     
@@ -127,7 +157,8 @@ class CalcViewController: UIViewController {
             divider3.text = "\(dividers[2])"
             divider4.text = "\(dividers[3])"
             
-            changeResult(percentIndex: defaultPercentIndex)
+            currentPercentIndex = defaults.integer(forKey: "default_tipPercentage_Index")
+            changeResult(segControllerIndex: currentPercentIndex)
         }
     }
 
@@ -143,19 +174,20 @@ class CalcViewController: UIViewController {
             divider3.text = "\(dividers[2])"
             divider4.text = "\(dividers[3])"
             
-            changeResult(percentIndex: defaultPercentIndex)
+            changeResult(segControllerIndex: currentPercentIndex)
         }
     }
     
-    func changeResult (percentIndex : Int) {
+    func changeResult (segControllerIndex : Int) {
         
-        let percentageP = percentagesPrint[percentIndex]
+        let percentageInt = percentageArrayToDisplay[segControllerIndex]
         
-        let percentage = Double(percentageP) / 100
+        let percentage = Double(percentageInt) / 100
         
         let amountBeforeTip = NSString(string: inputTextField.text!).doubleValue
         
         let tipValue = amountBeforeTip * percentage
+        
         let amountAfterTip = amountBeforeTip + tipValue
         
         tipResultLabel.text = tipValue.asLocaleCurrency
@@ -174,47 +206,50 @@ class CalcViewController: UIViewController {
         divider2.text = "\(dividers[1])"
         divider3.text = "\(dividers[2])"
         divider4.text = "\(dividers[3])"
-        changeResult(percentIndex: defaultPercentIndex)
+        changeResult(segControllerIndex: currentPercentIndex)
     }
     
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
         
         if segue.identifier == "doneSetting" {
 
-            let setController = segue.source as! SettingTableViewController
-            let newpercentage = setController.defaultTipIndex
+            let settingController = segue.source as! SettingTableViewController
+            let newpercentage = settingController.defaultTipIndex
             if (newpercentage == nil) {
-                changeResult(percentIndex: defaultPercentIndex)
+                changeResult(segControllerIndex: currentPercentIndex)
             } else {
-                percentSegmentController.selectedSegmentIndex = setController.percentageBar.selectedSegmentIndex
+                percentSegmentController.selectedSegmentIndex = settingController.percentageBar.selectedSegmentIndex
                 
-                if (setController.p1 > 100 || setController.p1 < 0) {
-                    setController.p1 = percentagesPrint[0]
+                if (settingController.p1 > 100 || settingController.p1 < 0) {
+                    settingController.p1 = percentageArrayToDisplay[0]
                 } else {
-                    percentagesPrint[0] = setController.p1
-                    percent1 = Double(setController.p1 / 100)
+                    percentageArrayToDisplay[0] = settingController.p1
                 }
-                if (setController.p2 > 100 || setController.p2 < 0) {
-                    setController.p2 = percentagesPrint[1]
+                if (settingController.p2 > 100 || settingController.p2 < 0) {
+                    settingController.p2 = percentageArrayToDisplay[1]
                 } else {
-                    percentagesPrint[1] = setController.p2
-                    percent2 = Double(setController.p2 / 100)
+                    percentageArrayToDisplay[1] = settingController.p2
                 }
-                if (setController.p3 > 100 || setController.p3 < 0) {
-                    setController.p3 = percentagesPrint[2]
+                if (settingController.p3 > 100 || settingController.p3 < 0) {
+                    settingController.p3 = percentageArrayToDisplay[2]
                 } else {
-                    percentagesPrint[2] = setController.p3
-                    percent3 = Double(setController.p3 / 100)
+                    percentageArrayToDisplay[2] = settingController.p3
                 }
                 
-                percent1 = Double(percentagesPrint[0]) / 100
-                percent2 = Double(percentagesPrint[1]) / 100
-                percent3 = Double(percentagesPrint[2]) / 100
+                // update user default
+                let defaults = UserDefaults.standard
+                defaults.setValue(percentageArrayToDisplay[0], forKey: userPercentage.p1)
+                defaults.setValue(percentageArrayToDisplay[1], forKey: userPercentage.p2)
+                defaults.setValue(percentageArrayToDisplay[2], forKey: userPercentage.p3)
+                defaults.synchronize()
                 
-                percentSegmentController.setTitle("\(setController.p1)%", forSegmentAt: 0)
-                percentSegmentController.setTitle("\(setController.p2)%", forSegmentAt: 1)
-                percentSegmentController.setTitle("\(setController.p3)%", forSegmentAt: 2)
-                changeResult(percentIndex: newpercentage!)
+                // change segment controller value displayed
+                percentSegmentController.setTitle("\(percentageArrayToDisplay[0])%", forSegmentAt: 0)
+                percentSegmentController.setTitle("\(percentageArrayToDisplay[1])%", forSegmentAt: 1)
+                percentSegmentController.setTitle("\(percentageArrayToDisplay[2])%", forSegmentAt: 2)
+                
+                print(percentageArrayToDisplay[0])
+                changeResult(segControllerIndex: newpercentage!)
                 
             }
         }

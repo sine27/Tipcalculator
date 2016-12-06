@@ -16,22 +16,23 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet weak var percentageBar: UISegmentedControl!
     
     var defaultTipIndex : Int!
-    var p1 = percentagesPrint[0]
-    var p2 = percentagesPrint[1]
-    var p3 = percentagesPrint[2]
+    var p1 = percentageArrayToDisplay[0]
+    var p2 = percentageArrayToDisplay[1]
+    var p3 = percentageArrayToDisplay[2]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        percentage1TextField.text = "\(percentagesPrint[0])"
-        percentage2TextField.text = "\(percentagesPrint[1])"
-        percentage3TextField.text = "\(percentagesPrint[2])"
-        percentageBar.setTitle("\(percentagesPrint[0])%", forSegmentAt: 0)
-        percentageBar.setTitle("\(percentagesPrint[1])%", forSegmentAt: 1)
-        percentageBar.setTitle("\(percentagesPrint[2])%", forSegmentAt: 2)
+        percentage1TextField.text = "\(percentageArrayToDisplay[0])"
+        percentage2TextField.text = "\(percentageArrayToDisplay[1])"
+        percentage3TextField.text = "\(percentageArrayToDisplay[2])"
+        percentageBar.setTitle("\(percentageArrayToDisplay[0])%", forSegmentAt: 0)
+        percentageBar.setTitle("\(percentageArrayToDisplay[1])%", forSegmentAt: 1)
+        percentageBar.setTitle("\(percentageArrayToDisplay[2])%", forSegmentAt: 2)
         
-        defaultTipIndex = defaultPercentIndex
-        percentageBar.selectedSegmentIndex = defaultPercentIndex
+        let defaults = UserDefaults.standard
+        percentageBar.selectedSegmentIndex = defaults.integer(forKey: "default_tipPercentage_Index")
+        defaultTipIndex = percentageBar.selectedSegmentIndex
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,5 +73,6 @@ class SettingTableViewController: UITableViewController {
         let defaults = UserDefaults.standard
         defaults.set(defaultTipIndex, forKey: "default_tipPercentage_Index")
         defaults.synchronize()
+        currentPercentIndex = defaultTipIndex
     }
 }
