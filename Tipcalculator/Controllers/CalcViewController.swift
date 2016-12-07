@@ -15,6 +15,16 @@ var percentageArrayToDisplay : [Int] = [1, 2, 3]
 let currencyStringArray = ["$", "£", "€", "¥"]
 var defaultCurrencyIndex : Int = 0
 
+// // original try for getting current locale
+//extension Double {
+//    var asLocaleCurrency: String {
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .currency
+//        formatter.locale = Locale.current
+//        return formatter.string(from :NSNumber(value: self))!
+//    }
+//}
+
 extension Double {
     var asLocaleCurrency: String {
         var currencyIdentifier = ""
