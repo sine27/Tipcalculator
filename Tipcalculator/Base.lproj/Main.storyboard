@@ -282,6 +282,7 @@
                                                                 <constraint firstAttribute="height" constant="32" id="2qe-Pf-lTi"/>
                                                             </constraints>
                                                             <segments>
+                                                                <segment title="def"/>
                                                                 <segment title="$"/>
                                                                 <segment title="£"/>
                                                                 <segment title="€"/>
