@@ -12,7 +12,7 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 let screenWidth: CGFloat = UIScreen.main.bounds.width
 var currentPercentIndex : Int = 0
 var percentageArrayToDisplay : [Int] = [1, 2, 3]
-let currencyStringArray = ["$", "£", "€", "¥"]
+var currencyStringArray = ["", "$", "£", "€", "¥"]
 var defaultCurrencyIndex : Int = 0
 
 extension Double {
@@ -89,8 +89,10 @@ class CalcViewController: UIViewController {
             defaults.set(0, forKey: userData.currency)
             defaults.synchronize()
         }
+        
+        currencyStringArray[0] = Locale.current.currencySymbol!
         inputTextField.placeholder = currencyStringArray[defaultCurrencyIndex]
-
+ 
         tipResultLabel.text = 0.0.asLocaleCurrency
         resultLabel0.text = 0.0.asLocaleCurrency
         resultLabel1.text = 0.0.asLocaleCurrency
@@ -256,7 +258,7 @@ class CalcViewController: UIViewController {
                 
                 defaultCurrencyIndex = settingController.currencyIndex
                 inputTextField.placeholder = currencyStringArray[defaultCurrencyIndex]
-
+                    
                 print("Index: \(defaultCurrencyIndex)")
                 
                 currentPercentIndex = newpercentage!
