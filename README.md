@@ -49,6 +49,9 @@ Click to view the **DEMO Video** on Youtube:
 
 (https://youtu.be/kY90RGqJHgM)
 
+<br\ >
+### Demo GIF
+
 <img src='http://i.imgur.com/VCNt2B6.gif' title='tip calculation' width='270' alt='Video Walkthrough' />
 
 <img src='http://i.imgur.com/8qbsoRN.gif' title='Setting' width='270' alt='Video Walkthrough' />
