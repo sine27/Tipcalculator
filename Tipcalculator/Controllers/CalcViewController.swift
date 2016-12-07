@@ -21,21 +21,17 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if (defaultCurrencyIndex == 0) {
+            currencyIdentifier = Locale.current.identifier
+        } else if (defaultCurrencyIndex == 1) {
             currencyIdentifier = "en_US"
-            formatter.numberStyle = .currency
-            formatter.locale = Locale.current
-        } else {
-            if (defaultCurrencyIndex == 1) {
-                currencyIdentifier = "en_US"
-            } else if (defaultCurrencyIndex == 2) {
-                currencyIdentifier = "en-GB"
-            } else if (defaultCurrencyIndex == 3) {
-                currencyIdentifier = "fr_FR"
-            } else if (defaultCurrencyIndex == 4) {
-                currencyIdentifier = "zh_Hans_CN"
-            }
-            formatter.locale = Locale(identifier: currencyIdentifier)
+        } else if (defaultCurrencyIndex == 2) {
+            currencyIdentifier = "en-GB"
+        } else if (defaultCurrencyIndex == 3) {
+            currencyIdentifier = "fr_FR"
+        } else if (defaultCurrencyIndex == 4) {
+            currencyIdentifier = "zh_Hans_CN"
         }
+        formatter.locale = Locale(identifier: currencyIdentifier)
         return formatter.string(from :NSNumber(value: self))!
     }
 }
@@ -258,8 +254,6 @@ class CalcViewController: UIViewController {
                 
                 defaultCurrencyIndex = settingController.currencyIndex
                 inputTextField.placeholder = currencyStringArray[defaultCurrencyIndex]
-                    
-                print("Index: \(defaultCurrencyIndex)")
                 
                 currentPercentIndex = newpercentage!
                 
