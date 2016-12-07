@@ -47,15 +47,15 @@ Here's a walkthrough of implemented user stories:
 
 Click to view the **DEMO Video** on Youtube:
 
-[![Alt text](https://i.ytimg.com/vi/7rqaIN4-Wzw/hqdefault.jpg)](https://youtu.be/kY90RGqJHgM)
+(https://youtu.be/kY90RGqJHgM)
 
-<img src='http://imgur.com/VCNt2B6' title='tip calculation' width='270' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/VCNt2B6.gif' title='tip calculation' width='270' alt='Video Walkthrough' />
 
-<img src='http://imgur.com/8qbsoRN' title='Setting' width='270' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/8qbsoRN.gif' title='Setting' width='270' alt='Video Walkthrough' />
 
-<img src='http://imgur.com/U3LKSXz' title='Setting' width='270' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/U3LKSXz.gif' title='Setting' width='270' alt='Video Walkthrough' />
 
-<img src='http://imgur.com/RfFObzW' title='Setting' width='270' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/RfFObzW.gif' title='Setting' width='270' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
