@@ -10,7 +10,7 @@ Time spent: **8** hours spent in total
 
 ## User Stories
 
-The following **required** functionality is complete:
+#### The following **required** functionality is complete:
 * User can enter a bill amount, choose a tip percentage, and see the tip and total values.
 
 The following **optional** features are implemented:
@@ -19,17 +19,18 @@ The following **optional** features are implemented:
 * Remembering the bill amount across app restarts (if < 10 mins)
 * Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
-The following **additional** features are implemented:
+#### The following **additional** features are implemented:
 
 - Users can change the percentage value in the segment controller
 - Users can increase and decrease the value of divider
 - Users can reset the divider starting with 1, empty the imput, initialize the results, return to default tip rate by tapping resetting
 - Users can use this app both on iPhone and iPad
 
-The following **additional** features has bug unsolved:
+#### The following features has bug unsolved:
+
 * Using locale-specific currency (and currency thousands separators) displays a strange unit after changing into language other than English ("US$" when select French)
 
-The following **additional** features are in the TODO list:
+#### The following features are in the TODO list:
 - change outlook by enable user setting (Setting controller is a table view, add cell to enable more)
 
 ### Test cases concern:
