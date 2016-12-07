@@ -43,6 +43,8 @@ The following features are in the **TODO** list:
 
 Here's a walkthrough of implemented user stories:
 
+Click to view the **DEMO Video** on Youtube:
+
 [![Alt text](https://i.ytimg.com/vi/7rqaIN4-Wzw/hqdefault.jpg)](https://youtu.be/7rqaIN4-Wzw)
 
 <img src='http://i.imgur.com/8JsJInq.gif' title='tip calculation' width='270' alt='Video Walkthrough' />
