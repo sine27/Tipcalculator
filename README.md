@@ -35,7 +35,7 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7rqaIN4-Wzw" frameborder="0" allowfullscreen></iframe>
 <br />
-### tip calculation____________________setting_________________________reset divider
+### tip calculation, setting, reset divider
 
-<img src="http://i.imgur.com/8JsJInq.gif" width="300">  <img src="http://i.imgur.com/vDNSKHP.gif" width="300"> <img src="http://i.imgur.com/diFc4kq.gif" width="300">
+<img src="http://i.imgur.com/8JsJInq.gif" width="270">  <img src="http://i.imgur.com/vDNSKHP.gif" width="270"> <img src="http://i.imgur.com/diFc4kq.gif" width="270">
 
