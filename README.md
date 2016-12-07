@@ -54,8 +54,7 @@ Click to view the **DEMO Video** on Youtube:
 
 <img src='http://i.imgur.com/VCNt2B6.gif' title='tip calculation' width='270' alt='Video Walkthrough' />
 
-
-[Imgur](http://i.imgur.com/8qbsoRN.gifv)
+<iframe class="imgur-embed" width="50%"  frameborder="0" src="http://i.imgur.com/8qbsoRN.gifv#embed"></iframe>
 
 
 <img src='http://i.imgur.com/U3LKSXz.gif' title='restarting' width='270' alt='Video Walkthrough' />
