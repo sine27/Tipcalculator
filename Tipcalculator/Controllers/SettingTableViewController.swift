@@ -14,8 +14,10 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet weak var percentage2TextField: UITextField!
     @IBOutlet weak var percentage3TextField: UITextField!
     @IBOutlet weak var percentageBar: UISegmentedControl!
+    @IBOutlet weak var currencySegmentController: UISegmentedControl!
     
     var defaultTipIndex : Int!
+    var currencyIndex : Int!
     var p1 = percentageArrayToDisplay[0]
     var p2 = percentageArrayToDisplay[1]
     var p3 = percentageArrayToDisplay[2]
@@ -31,8 +33,10 @@ class SettingTableViewController: UITableViewController {
         percentageBar.setTitle("\(percentageArrayToDisplay[2])%", forSegmentAt: 2)
         
         let defaults = UserDefaults.standard
-        percentageBar.selectedSegmentIndex = defaults.integer(forKey: userPercentage.pdi)
+        percentageBar.selectedSegmentIndex = defaults.integer(forKey: userData.pdi)
         defaultTipIndex = percentageBar.selectedSegmentIndex
+        currencySegmentController.selectedSegmentIndex = defaultCurrencyIndex
+        currencyIndex = defaultCurrencyIndex
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,11 +71,11 @@ class SettingTableViewController: UITableViewController {
         percentageBar.setTitle("\(p3)%", forSegmentAt: 2)
     }
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
-        
-    }
-    
     @IBAction func defaultIndexTapped(_ sender: Any) {
         defaultTipIndex = percentageBar.selectedSegmentIndex
+    }
+    
+    @IBAction func currencyIndexChanged(_ sender: Any) {
+        currencyIndex = currencySegmentController.selectedSegmentIndex
     }
 }

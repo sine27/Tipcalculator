@@ -12,21 +12,34 @@ let screenHeight: CGFloat = UIScreen.main.bounds.height
 let screenWidth: CGFloat = UIScreen.main.bounds.width
 var currentPercentIndex : Int = 0
 var percentageArrayToDisplay : [Int] = [1, 2, 3]
+let currencyStringArray = ["$", "£", "€", "¥"]
+var defaultCurrencyIndex : Int = 0
 
 extension Double {
     var asLocaleCurrency: String {
+        var currencyIdentifier = ""
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        formatter.locale = Locale.current
+        if (defaultCurrencyIndex == 0) {
+            currencyIdentifier = "en_US"
+        } else if (defaultCurrencyIndex == 1) {
+            currencyIdentifier = "en-GB"
+        } else if (defaultCurrencyIndex == 2) {
+            currencyIdentifier = "fr_FR"
+        } else if (defaultCurrencyIndex == 3) {
+            currencyIdentifier = "zh_Hans_CN"
+        }
+        formatter.locale = Locale(identifier: currencyIdentifier)
         return formatter.string(from :NSNumber(value: self))!
     }
 }
 
-struct userPercentage {
+struct userData {
     static let p1 = "first_percentage_displayed"
     static let p2 = "second_percentage_displayed"
     static let p3 = "third_percentage_displayed"
     static let pdi = "default_tipPercentage_Index"
+    static let currency = "user_currency_Index"
 }
 
 class CalcViewController: UIViewController {
@@ -62,6 +75,15 @@ class CalcViewController: UIViewController {
         inputToTop.constant = 80
         
         inputTextField.becomeFirstResponder()
+        
+        // currency unit setting
+        if (defaults.object(forKey: userData.currency) != nil) {
+            defaultCurrencyIndex = defaults.integer(forKey: userData.currency)
+        } else {
+            defaults.set(0, forKey: userData.currency)
+            defaults.synchronize()
+        }
+        inputTextField.placeholder = currencyStringArray[defaultCurrencyIndex]
 
         tipResultLabel.text = 0.0.asLocaleCurrency
         resultLabel0.text = 0.0.asLocaleCurrency
@@ -78,26 +100,27 @@ class CalcViewController: UIViewController {
         
         // check and get userDefault value for pertage array
         
-        if (defaults.object(forKey: userPercentage.p1) == nil) {
+        if (defaults.object(forKey: userData.p1) == nil) {
             percentageArrayToDisplay = [18, 20, 22]
-            defaults.setValue(18, forKey: userPercentage.p1)
-            defaults.setValue(20, forKey: userPercentage.p2)
-            defaults.setValue(22, forKey: userPercentage.p3)
+            defaults.setValue(18, forKey: userData.p1)
+            defaults.setValue(20, forKey: userData.p2)
+            defaults.setValue(22, forKey: userData.p3)
             defaults.synchronize()
         } else {
-            percentageArrayToDisplay[0] = defaults.integer(forKey: userPercentage.p1)
-            percentageArrayToDisplay[1] = defaults.integer(forKey: userPercentage.p2)
-            percentageArrayToDisplay[2] = defaults.integer(forKey: userPercentage.p3)
+            percentageArrayToDisplay[0] = defaults.integer(forKey: userData.p1)
+            percentageArrayToDisplay[1] = defaults.integer(forKey: userData.p2)
+            percentageArrayToDisplay[2] = defaults.integer(forKey: userData.p3)
         }
         
         percentSegmentController.setTitle("\(percentageArrayToDisplay[0])%", forSegmentAt: 0)
         percentSegmentController.setTitle("\(percentageArrayToDisplay[1])%", forSegmentAt: 1)
         percentSegmentController.setTitle("\(percentageArrayToDisplay[2])%", forSegmentAt: 2)
         
-        if (defaults.object(forKey: userPercentage.pdi) != nil) {
-            currentPercentIndex = defaults.integer(forKey: userPercentage.pdi)
+        if (defaults.object(forKey: userData.pdi) != nil) {
+            currentPercentIndex = defaults.integer(forKey: userData.pdi)
         } else {
-            defaults.set(0, forKey: userPercentage.pdi)
+            defaults.set(0, forKey: userData.pdi)
+            defaults.synchronize()
         }
         percentSegmentController.selectedSegmentIndex = currentPercentIndex
     }
@@ -217,14 +240,19 @@ class CalcViewController: UIViewController {
 
             let settingController = segue.source as! SettingTableViewController
             let newpercentage = settingController.defaultTipIndex
+            
             if (newpercentage == nil) {
                 changeResult(segControllerIndex: currentPercentIndex)
             } else {
-                
-                let defaults = UserDefaults.standard
-                defaults.set(newpercentage, forKey: userPercentage.pdi)
+                defaults.set(newpercentage, forKey: userData.pdi)
+                defaults.set(settingController.currencyIndex, forKey: userData.currency)
                 defaults.synchronize()
+                
+                defaultCurrencyIndex = settingController.currencyIndex
+                inputTextField.placeholder = currencyStringArray[defaultCurrencyIndex]
 
+                print("Index: \(defaultCurrencyIndex)")
+                
                 currentPercentIndex = newpercentage!
                 
                 percentSegmentController.selectedSegmentIndex = settingController.percentageBar.selectedSegmentIndex
@@ -246,9 +274,9 @@ class CalcViewController: UIViewController {
                 }
                 
                 // update user default
-                defaults.setValue(percentageArrayToDisplay[0], forKey: userPercentage.p1)
-                defaults.setValue(percentageArrayToDisplay[1], forKey: userPercentage.p2)
-                defaults.setValue(percentageArrayToDisplay[2], forKey: userPercentage.p3)
+                defaults.setValue(percentageArrayToDisplay[0], forKey: userData.p1)
+                defaults.setValue(percentageArrayToDisplay[1], forKey: userData.p2)
+                defaults.setValue(percentageArrayToDisplay[2], forKey: userData.p3)
                 defaults.synchronize()
                 
                 // change segment controller value displayed

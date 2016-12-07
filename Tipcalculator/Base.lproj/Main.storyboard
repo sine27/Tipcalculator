@@ -441,6 +441,48 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" focusStyle="custom" rowHeight="80" id="laK-n0-TBT">
+                                        <rect key="frame" x="0.0" y="212" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="laK-n0-TBT" id="m5I-A0-gyI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="f41-kS-71O">
+                                                    <rect key="frame" x="9.5" y="26" width="356" height="28"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crrency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTu-sY-hFS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="D7T-d4-qmb"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3r1-pB-yEm">
+                                                            <rect key="frame" x="85" y="0.0" width="271" height="29"/>
+                                                            <segments>
+                                                                <segment title="$"/>
+                                                                <segment title="£"/>
+                                                                <segment title="€"/>
+                                                                <segment title="¥"/>
+                                                            </segments>
+                                                            <connections>
+                                                                <action selector="currencyIndexChanged:" destination="PqR-1O-vmv" eventType="valueChanged" id="sxh-2A-EP1"/>
+                                                                <action selector="defaultIndexTapped:" destination="PqR-1O-vmv" eventType="valueChanged" id="REy-Oc-eX8"/>
+                                                            </connections>
+                                                        </segmentedControl>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f41-kS-71O" firstAttribute="centerX" secondItem="m5I-A0-gyI" secondAttribute="centerX" id="7sM-oL-y4O"/>
+                                                <constraint firstItem="f41-kS-71O" firstAttribute="width" secondItem="m5I-A0-gyI" secondAttribute="width" multiplier="0.95" id="Cla-AE-TCX"/>
+                                                <constraint firstItem="f41-kS-71O" firstAttribute="centerY" secondItem="m5I-A0-gyI" secondAttribute="centerY" id="hJa-mc-RTx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -452,12 +494,12 @@
                     <navigationItem key="navigationItem" title="Setting" id="VF7-gb-oBb">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="rhN-aU-0z5">
                             <connections>
-                                <action selector="saveButtonTapped:" destination="PqR-1O-vmv" id="ocx-d2-JjK"/>
                                 <segue destination="ibU-cU-dph" kind="unwind" identifier="doneSetting" unwindAction="unwindToList:" id="rXr-24-EUr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="currencySegmentController" destination="3r1-pB-yEm" id="aGs-4K-P3u"/>
                         <outlet property="percentage1TextField" destination="xho-Vd-Fed" id="qHY-8P-o6a"/>
                         <outlet property="percentage2TextField" destination="bJA-RC-ndI" id="PTF-Yf-vIw"/>
                         <outlet property="percentage3TextField" destination="Nsh-RX-Lrm" id="nf0-FG-kwv"/>
