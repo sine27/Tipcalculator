@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- Users can change the percentage value in the segment controller
+- Users can change the percentage value in the segment controller in the setting view controller
 - Users can increase and decrease the value of divider
 - Users can reset the divider starting with 1, empty the imput, initialize the results, return to default tip rate by tapping resetting
 - Users can use this app both on iPhone and iPad
