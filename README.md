@@ -56,13 +56,17 @@ Basic Calculation and percentage changing
 
 <img src='http://i.imgur.com/VCNt2B6.gif' title='tip calculation' width='270' alt='Video Walkthrough' />
 
-currency with locale.current
+reseting
 
 <img src='http://i.imgur.com/U3LKSXz.gif' title='restarting' width='270' alt='Video Walkthrough' />
 
 ##### Image not displaying: 
 
+Restarting
+
 http://i.imgur.com/8qbsoRN.gif
+
+currency with locale.current
 
 http://i.imgur.com/RfFObzW.gif
 
