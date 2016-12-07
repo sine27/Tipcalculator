@@ -53,6 +53,10 @@ Click to view the **DEMO Video** on Youtube:
 
 <img src='http://i.imgur.com/vDNSKHP.gif' title='Setting' width='270' alt='Video Walkthrough' />
 
+<img src='http://i.imgur.com/Kq3Chnc.gif' title='Setting' width='270' alt='Video Walkthrough' />
+
+<img src='http://i.imgur.com/kSacV3p.gif' title='Setting' width='270' alt='Video Walkthrough' />
+
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
