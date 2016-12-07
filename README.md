@@ -52,15 +52,19 @@ Click to view the **DEMO Video** on Youtube:
 <br\ >
 ### Demo GIF
 
+Basic Calculation and percentage changing
+
 <img src='http://i.imgur.com/VCNt2B6.gif' title='tip calculation' width='270' alt='Video Walkthrough' />
 
-[img]http://i.imgur.com/8qbsoRN.gif[/img]
-
+currency with locale.current
 
 <img src='http://i.imgur.com/U3LKSXz.gif' title='restarting' width='270' alt='Video Walkthrough' />
 
+##### Image not displaying: 
 
-<img src='http://i.imgur.com/RfFObzW.gif' title='currency' width='270' alt='Video Walkthrough' />
+http://i.imgur.com/8qbsoRN.gif
+
+http://i.imgur.com/RfFObzW.gif
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
