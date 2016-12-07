@@ -26,9 +26,11 @@ The following **additional** features are implemented:
 - Users can reset the divider starting with 1, empty the imput, initialize the results, return to default tip rate by tapping resetting
 - Users can use this app both on iPhone and iPad
 
-The following features has bug **unsolved**:
+The following features has bug with my solution different with the requirment:
 
-* Using locale-specific currency (and currency thousands separators) displays a strange unit after changing into language other than English ("US$" when select French)
+- Using locale-specific currency (and currency thousands separators) displays a strange format after changing into some language
+	- usercase: I am a Chinese living in US, but use Chinese system
+	- my solution: enable setting currency in setting controller, with 4 general choices.
 
 The following features are in the **TODO** list:
 
