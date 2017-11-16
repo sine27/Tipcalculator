@@ -63,6 +63,8 @@ class CalcViewController: UIViewController {
     @IBOutlet weak var divider3: UILabel!
     @IBOutlet weak var divider4: UILabel!
     @IBOutlet weak var inputToTop: NSLayoutConstraint!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
     
     var dividers = [1, 2, 3, 4]
     let defaults = UserDefaults.standard
@@ -77,6 +79,9 @@ class CalcViewController: UIViewController {
         inputToTop.constant = 80
         
         inputTextField.becomeFirstResponder()
+        
+        roundButton(btn: plusButton)
+        roundButton(btn: minusButton)
         
         // currency unit setting
         if (defaults.object(forKey: userData.currency) != nil) {
@@ -96,10 +101,10 @@ class CalcViewController: UIViewController {
         resultLabel3.text = 0.0.asLocaleCurrency
 
         // change the value of all divider when "+", "-" tapped +- 4)
-        divider1.text = "1"
-        divider2.text = "2"
-        divider3.text = "3"
-        divider4.text = "4"
+        divider1.text = "1×"
+        divider2.text = "2×"
+        divider3.text = "3×"
+        divider4.text = "4×"
         
         
         // check and get userDefault value for pertage array
@@ -127,6 +132,13 @@ class CalcViewController: UIViewController {
             defaults.synchronize()
         }
         percentSegmentController.selectedSegmentIndex = currentPercentIndex
+    }
+    
+    func roundButton(btn: UIButton) {
+        btn.layer.cornerRadius = 25
+        btn.layer.borderColor = btn.titleLabel?.textColor.cgColor
+        btn.layer.borderWidth = 1
+        btn.layer.masksToBounds = true
     }
     
     // hide keyboard
@@ -180,10 +192,10 @@ class CalcViewController: UIViewController {
             dividers[1] += 4
             dividers[2] += 4
             dividers[3] += 4
-            divider1.text = "\(dividers[0])"
-            divider2.text = "\(dividers[1])"
-            divider3.text = "\(dividers[2])"
-            divider4.text = "\(dividers[3])"
+            divider1.text = "\(dividers[0])×"
+            divider2.text = "\(dividers[1])×"
+            divider3.text = "\(dividers[2])×"
+            divider4.text = "\(dividers[3])×"
             
             changeResult(segControllerIndex: currentPercentIndex)
         }
@@ -196,10 +208,10 @@ class CalcViewController: UIViewController {
             dividers[1] -= 4
             dividers[2] -= 4
             dividers[3] -= 4
-            divider1.text = "\(dividers[0])"
-            divider2.text = "\(dividers[1])"
-            divider3.text = "\(dividers[2])"
-            divider4.text = "\(dividers[3])"
+            divider1.text = "\(dividers[0])×"
+            divider2.text = "\(dividers[1])×"
+            divider3.text = "\(dividers[2])×"
+            divider4.text = "\(dividers[3])×"
             
             changeResult(segControllerIndex: currentPercentIndex)
         }
@@ -228,10 +240,10 @@ class CalcViewController: UIViewController {
     @IBAction func resetValue(_ sender: Any) {
         inputTextField.text = ""
         dividers = [1, 2, 3, 4]
-        divider1.text = "\(dividers[0])"
-        divider2.text = "\(dividers[1])"
-        divider3.text = "\(dividers[2])"
-        divider4.text = "\(dividers[3])"
+        divider1.text = "\(dividers[0])×"
+        divider2.text = "\(dividers[1])×"
+        divider3.text = "\(dividers[2])×"
+        divider4.text = "\(dividers[3])×"
         
         currentPercentIndex = defaults.integer(forKey: "default_tipPercentage_Index")
         percentSegmentController.selectedSegmentIndex = currentPercentIndex
